@@ -9,4 +9,13 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  <servlet>
+  	<servlet-name>MyServ</servlet-name>
+  	<servlet-class>com.org.controller.TestController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>MyServ</servlet-name>
+  	<url-pattern>./home</url-pattern>
+  </servlet-mapping>
 </web-app>
