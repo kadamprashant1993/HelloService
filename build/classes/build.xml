@@ -1,0 +1,35 @@
+<?xml version="1.0" ?> 
+<project name="HelloService" default="war">
+
+	<path id="compile.classpath">
+		<fileset dir="C:/Program Files (x86)/Jenkins/workspace/WASDeploy/HelloService/WebContent/WEB-INF/lib">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+	
+	<target name="init">
+		<mkdir dir="C:/Program Files (x86)/Jenkins/workspace/WASDeploy/HelloService/build/classes"/>
+		<mkdir dir="C:/Program Files (x86)/Jenkins/workspace/WASDeploy/HelloService/dist" />
+		<mkdir dir="C:/Program Files (x86)/Jenkins/workspace/WASDeploy/HelloService/WebContent/WEB-INF/lib" />
+	</target>
+	
+	<target name="compile" depends="init" >
+		<javac destdir="C:/Program Files (x86)/Jenkins/workspace/WASDeploy/HelloService/build/classes" debug="true" srcdir="C:/Program Files (x86)/Jenkins/workspace/WASDeploy/HelloService/src">
+			<classpath refid="compile.classpath"/>
+		</javac>
+	</target>
+	
+	<target name="war" depends="compile">
+		<war destfile="C:/Program Files (x86)/Jenkins/workspace/WASDeploy/HelloService/dist/HelloService.war" webxml="C:/Program Files (x86)/Jenkins/workspace/WASDeploy/HelloService/WebContent/WEB-INF/web.xml">
+			<fileset dir="C:/Program Files (x86)/Jenkins/workspace/WASDeploy/HelloService/WebContent"/>
+			<lib dir="C:/Program Files (x86)/Jenkins/workspace/WASDeploy/HelloService/WebContent/WEB-INF/lib"/>
+			<classes dir="C:/Program Files (x86)/Jenkins/workspace/WASDeploy/HelloService/build/classes"/>
+		</war>
+	</target>
+	
+	<target name="clean">
+		<delete dir="C:/Program Files (x86)/Jenkins/workspace/WASDeploy/HelloService/dist" />
+		<delete dir="C:/Program Files (x86)/Jenkins/workspace/WASDeploy/HelloService/build" />
+	</target>
+	
+</project>
